@@ -15,7 +15,6 @@
             }
         };
 
-
         async function load(params) {
             const obj = await WebAssembly.instantiateStreaming(fetch('alert.wasm'), importObject);
             obj.instance.exports.sum(2, 40);
