@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>WebAssembly</title>
+</head>
+
+<body>
+    <script>
+        async function load(params) {
+            const obj = await WebAssembly.instantiateStreaming(fetch('sum.wasm'));
+            const res = obj.instance.exports.sum(2, 40);
+
+            console.log("Result from WASM: ", res);
+        }
+
+        load();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>WebAssembly</title>
+</head>
+
+<body>
+    <script>
+        let obj; 
+
+        const importObject = {
+            env: {
+                alert: (offset) => {
+                    const memory = obj.instance.exports.memory;
+
+                    const strBuf = new Uint8Array(memory.buffer, offset, 256);
+                    const str = new TextDecoder().decode(strBuf);
+                    console.log(str);  
+                    alert(str);
+                }
+            }
+        };
+
+        async function load(params) {
+            obj = await WebAssembly.instantiateStreaming(fetch('memory.wasm'), importObject);
+            obj.instance.exports.doWork();
+        }
+
+        load();
+    </script>
+</body>
+
+</html>
