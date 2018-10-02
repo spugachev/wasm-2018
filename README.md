@@ -8,6 +8,23 @@ source ~/dev/emsdk/emsdk_env.sh
 ```bash
 GOOS=js GOARCH=wasm go build -o main.wasm main.go
 ```
+```bash
+dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+dotnet new blazor
+dotnet run
+```
+
+```html
+<button type="button" class="btn btn-primary" onclick="@btnClick">@text</button>
+
+@functions {
+    string text = "Initial text";
+
+    void btnClick(){
+        text = "Clicked";
+    }
+}
+```
 
 * [Skelets](http://aws-website-webassemblyskeletalanimation-ffaza.s3-website-us-east-1.amazonaws.com/)
 * [QT](http://example.qt.io/qt-webassembly/widgets/richtext/textedit/textedit.html )
